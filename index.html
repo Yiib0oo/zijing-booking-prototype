@@ -404,6 +404,7 @@
   <a data-go="s9"><span class="n">诊</span>诊疗资料</a>
   <a data-go="s10"><span class="n">方</span>处方查询</a>
   <a data-go="s11"><span class="n">检</span>检查项目</a>
+  <a data-go="s24"><span class="n">报</span>报告列表</a>
   <a data-go="s23"><span class="n">列</span>挂号列表</a>
   <div class="grp">全流程导诊</div>
   <a data-go="s12"><span class="n">导</span>全流程导诊</a>
@@ -449,7 +450,7 @@
             <div style="position:absolute;right:16px;bottom:16px;text-align:right;"><div class="lbl">预约挂号</div><div class="sub">预约线下门诊</div></div>
           </div>
           <div class="hf-right">
-            <div class="hf-sm doc" onclick="go('s9')">
+            <div class="hf-sm doc" onclick="go('s24')">
               <span class="doc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ac-blue)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
               <div class="tx"><div class="lbl">诊疗资料</div><div class="sub">病例报告在线查询</div></div>
             </div>
@@ -1093,6 +1094,22 @@
       </div>
     </section>
 
+    <!-- ========== 24 报告列表 ========== -->
+    <section class="screen" id="s24">
+      <div class="statusbar"><span>9:41</span><span>● ● ●</span></div>
+      <div class="topbar"><div class="back" onclick="hist()">‹</div><div class="ttl">报告列表</div><div class="mini"><i>●●●</i><i>◉</i></div></div>
+      <div class="body">
+        <div class="tabs" style="margin-top:12px;" id="s24-tabs">
+          <span class="on" onclick="swS24Tab(0)">检验报告</span>
+          <span onclick="swS24Tab(1)">检查报告</span>
+          <span onclick="swS24Tab(2)">门诊病历</span>
+          <span onclick="swS24Tab(3)">住院病历</span>
+        </div>
+        <div id="s24-list"></div>
+        <div style="height:10px;"></div>
+      </div>
+    </section>
+
 
   <!-- 底部Tab栏 -->
   <div class="tabbar on" id="tabbar">
@@ -1438,6 +1455,30 @@
     s23tab = t;
     document.querySelectorAll('#s23-tabs span').forEach(function(s,i){ s.classList.toggle('on',i===t); });
     renderS23();
+  // ───── s24 报告列表 ─────
+  let s24tab = 0;
+  function swS24Tab(t){
+    s24tab = t;
+    document.querySelectorAll('#s24-tabs span').forEach(function(s,i){ s.classList.toggle('on',i===t); });
+    renderS24();
+  }
+  var s24Data = {
+    0: [{name:'血常规',dept:'检验科',date:'06-28',status:'已出'},{name:'生化全套',dept:'检验科',date:'06-28',status:'已出'},{name:'甲状腺功能',dept:'检验科',date:'06-15',status:'已出'}],
+    1: [{name:'心电图',dept:'功能检查科',date:'06-28',status:'已出'},{name:'脑电图',dept:'神经电生理室',date:'06-20',status:'已出'}],
+    2: [{name:'心理门诊病历',dept:'心理门诊',date:'06-28',doc:'张明远',dx:'焦虑障碍'},{name:'精神科门诊病历',dept:'精神科门诊',date:'05-15',doc:'王建国',dx:'双相情感障碍'}],
+    3: [{name:'住院病历',dept:'精神科三病区',date:'07-15',doc:'王建国',dx:'双相情感障碍'}]
+  };
+  function renderS24(){
+    var el = document.getElementById('s24-list');
+    if(!el) return;
+    var data = s24Data[s24tab]||[];
+    el.innerHTML = data.map(function(r){
+      var statusHtml = r.status ? '<span style="font-size:11px;color:'+(r.status==='已出'?'var(--ok)':'var(--faint)')+';flex:none;">'+r.status+'</span>' : '';
+      return '<div class="card"><div class="re-top"><span class="re-date">'+r.date+'</span><span class="re-dept">'+r.dept+'</span>'+statusHtml+'</div><div style="font-size:13px;font-weight:600;color:var(--ink);">'+r.name+'</div>'+(r.doc?'<div class="re-doc">'+r.doc+' · <span style="font-size:11px;color:var(--sub);">'+r.dx+'</span></div>':'')+'</div>';
+    }).join('')+'<div style="height:10px;"></div>';
+  }
+  renderS24();
+
   }
   var s23AllCur = [
     {name:'张明远',title:'主任医师',type:'普通门诊',seq:'0012',dateStr:'06-28 周日',timeStr:'09:00-09:30',paid:true},
@@ -2137,7 +2178,7 @@
   `).join('');
 
   document.getElementById('my-func-grid').innerHTML = `
-    <div class="fg-row">${['历史挂号','历史诊断','历史检查','我的处方','我的报告','就诊人管理','发票查询','账号设置'].map(l=>fs(l==='历史挂号'?'s23':null,l)).join('')}</div>
+    <div class="fg-row">${['历史挂号','历史诊断','历史检查','我的处方','我的报告','就诊人管理','发票查询','账号设置'].map(l=>fs(l==='历史挂号'?'s23':l==='我的报告'?'s24':null,l)).join('')}</div>
   `;
 </script>
 </body>
