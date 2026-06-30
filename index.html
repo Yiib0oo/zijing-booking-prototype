@@ -155,7 +155,7 @@
   .flowcard .fc-detail::-webkit-scrollbar{display:none;}
   .flowcard .fc-detail .fct{font-size:12px;color:var(--faint);margin-bottom:8px;}
   .flowcard .fc-detail .fct .tag{display:inline-block;font-size:10px;background:var(--purple-soft);color:var(--purple);border-radius:3px;padding:1px 6px;margin:0 0 0 6px;font-weight:400;}
-  .flowcard .fc-detail .fc-book{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);}
+  .flowcard .fc-detail .fc-book{display:flex;gap:10px;align-items:flex-start;padding:8px 0;}
   .flowcard .fc-detail .fc-book:first-of-type{padding-top:2px;}
   .flowcard .fc-detail .fc-book:last-child{border-bottom:none;padding-bottom:2px;}
   .flowcard .fc-detail .fc-book .fc-av{flex:none;width:40px;height:52px;border-radius:4px;background:#EBE6F3 center/cover no-repeat;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:var(--purple-deep);overflow:hidden;}
@@ -388,7 +388,7 @@
 </head>
 <body>
 
-<nav class="nav">
+<nav class=nav>
   <h1>紫荆安康</h1>
   <p>门诊+住院完整原型（点击直接跳转）</p>
   <a data-go="s0" class="on"><span class="n">首</span>首页</a>
@@ -399,11 +399,12 @@
   <a data-go="s4"><span class="n">页</span>医生主页</a>
   <a data-go="s5"><span class="n">认</span>预约确认</a>
   <a data-go="s6"><span class="n">付</span>挂号支付</a>
-  <a data-go="s7"><span class="n">详</span>挂号详情(已付)</a>
-    <div class="grp">门诊扩展</div>
+  <a data-go="s7"><span class="n">详</span>挂号详情</a>
+  <div class="grp">门诊扩展</div>
   <a data-go="s9"><span class="n">诊</span>诊疗资料</a>
   <a data-go="s10"><span class="n">方</span>处方查询</a>
-  <a data-go="s11"><span class="n">检</span>检查预约</a>
+  <a data-go="s11"><span class="n">检</span>检查项目</a>
+  <a data-go="s23"><span class="n">列</span>挂号列表</a>
   <div class="grp">全流程导诊</div>
   <a data-go="s12"><span class="n">导</span>全流程导诊</a>
   <div class="grp">住院板块</div>
@@ -412,6 +413,13 @@
   <a data-go="s15"><span class="n">餐</span>营养订餐</a>
   <a data-go="s16"><span class="n">结</span>出院结算</a>
   <a data-go="s17"><span class="n">药</span>出院带药</a>
+  <div class="grp">缴费详情</div>
+  <a data-go="s20"><span class="n">检</span>检查缴费</a>
+  <a data-go="s21"><span class="n">门</span>门诊缴费</a>
+  <a data-go="s22"><span class="n">取</span>取药缴费</a>
+  <div class="grp">其他</div>
+  <a data-go="s18"><span class="n">知</span>通知中心</a>
+  <a data-go="s19"><span class="n">品</span>品牌故事</a>
 </nav>
 
 <div class="phone">
@@ -861,10 +869,17 @@
           <div class="d"><div class="w">明天</div><div class="dt">7-02</div></div>
           <div class="d"><div class="w">后天</div><div class="dt">7-03</div></div>
         </div></div>
-        <div class="tabs"><span class="on" onclick="swS15Meal(this,'bk')">早餐</span><span onclick="swS15Meal(this,'lc')">午餐</span><span onclick="swS15Meal(this,'dn')">晚餐</span></div>
-        <div id="s15-meals"></div>
-        <div class="sectitle" style="margin:12px 16px 8px;">订餐记录</div>
-        <div id="s15-history"></div>
+        <div class="tabs" style="margin-top:0;" id="s15-tabs">
+          <span class="on" onclick="swS15View('cur')">当前餐食</span>
+          <span onclick="swS15View('hist')">历史订单</span>
+        </div>
+        <div id="s15-view-cur">
+          <div class="tabs"><span class="on" onclick="swS15Meal(this,'bk')">早餐</span><span onclick="swS15Meal(this,'lc')">午餐</span><span onclick="swS15Meal(this,'dn')">晚餐</span></div>
+          <div id="s15-meals"></div>
+        </div>
+        <div id="s15-view-hist" style="display:none;">
+          <div id="s15-history"></div>
+        </div>
         <div style="height:10px;"></div>
       </div>
       <div class="footbar"><div class="price">已选<b id="s15-cnt">0</b>份 · <b id="s15-sum">¥0</b></div><button class="btn primary" onclick="confirmMeal()">下单</button></div>
@@ -942,11 +957,6 @@
             <div style="flex:1;"><div style="font-size:14px;font-weight:600;">张丽华</div><div style="font-size:11px;color:var(--sub);">母亲 · 身份证 110***********890</div></div>
           </div>
           <div style="margin-top:10px;font-size:12px;color:var(--purple);text-align:center;cursor:pointer;padding:8px;">+ 添加就诊人</div>
-        </div>
-        <div class="card">
-          <div class="rowkv"><span class="k"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#76767F" stroke-width="2" stroke-linecap="round" style="flex:none;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> 设置</span><span class="v" style="color:var(--faint);">›</span></div>
-          <div class="sectitle">就诊人管理</div>
-          <div class="rowkv"><span class="k"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#76767F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> 帮助与反馈</span><span class="v" style="color:var(--faint);">›</span></div>
         </div>
         <div style="height:10px;"></div>
       </div>
@@ -1710,6 +1720,20 @@
     el.parentElement.querySelectorAll('span').forEach(x=>x.classList.remove('on'));
     el.classList.add('on'); s15meal=t; renderS15();
   }
+  let s15view = 'cur';
+  function swS15View(t){
+    s15view = t;
+    document.querySelectorAll('#s15-tabs span').forEach(function(s){
+      s.classList.toggle('on', s.getAttribute('onclick').includes(t));
+    });
+    document.getElementById('s15-view-cur').style.display = t==='cur' ? 'block' : 'none';
+    document.getElementById('s15-view-hist').style.display = t==='hist' ? 'block' : 'none';
+    // Hide footbar when viewing history
+    var fb = document.querySelector('#s15').querySelector('.footbar');
+    if(fb) fb.style.display = t==='hist' ? 'none' : 'flex';
+    if(t==='hist') renderMealHistory();
+  }
+
   renderS15();
 
   var mealOrders = [];
