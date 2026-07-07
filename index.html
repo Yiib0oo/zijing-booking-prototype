@@ -430,6 +430,7 @@
   <a data-go="s21"><span class="n">费</span>门诊缴费</a>
   <div class="grp">门诊扩展</div>
   <a data-go="s9"><span class="n">诊</span>诊疗资料</a>
+  <a data-go="s35"><span class="n">记</span>就诊记录详情</a>
   <a data-go="s31"><span class="n">报</span>报告查看</a>
   <a data-go="s23"><span class="n">列</span>挂号列表</a>
   <a data-go="s33"><span class="n">缴</span>缴费查询</a>
@@ -1158,6 +1159,37 @@
       </div>
     </section>
 
+    <!-- ========== 35 就诊记录详情 ========== -->
+    <section class="screen" id="s35">
+      <div class="statusbar"><span>9:41</span><span>● ● ●</span></div>
+      <div class="topbar"><div class="back" onclick="hist()">‹</div><div class="ttl" id="s35-title">就诊记录详情</div><div class="mini"><i>●●●</i><i>◉</i></div></div>
+      <div class="body">
+        <div class="card" style="margin-top:12px;">
+          <div class="sectitle">基本信息</div>
+          <div class="rowkv"><span class="k">日期</span><span class="v" id="s35-date">-</span></div>
+          <div class="rowkv"><span class="k">科室</span><span class="v" id="s35-dept">-</span></div>
+          <div class="rowkv"><span class="k">医生</span><span class="v" id="s35-doc">-</span></div>
+        </div>
+        <div class="card" id="s35-rx-card" style="display:none;">
+          <div class="sectitle">处方信息</div>
+          <div id="s35-rx"></div>
+        </div>
+        <div class="card" id="s35-check-card" style="display:none;">
+          <div class="sectitle">检查项目</div>
+          <div id="s35-check"></div>
+        </div>
+        <div class="card" id="s35-advice-card" style="display:none;">
+          <div class="sectitle">医嘱</div>
+          <div id="s35-advice"></div>
+        </div>
+        <div class="card">
+          <div class="sectitle">注意事项</div>
+          <div class="notice">就诊后请遵医嘱按时服药、定期复诊。如有不适请及时联系主治医生。检查报告可在「诊疗资料-报告」中查看。</div>
+        </div>
+        <div style="height:10px;"></div>
+      </div>
+    </section>
+
     <!-- ========== 25 业务信息卡片 ========== -->
     <section class="screen" id="s25">
       <div class="statusbar"><span>9:41</span><span>● ● ●</span></div>
@@ -1623,7 +1655,19 @@
     renderS9();
   }
   var s9Date = [
-    [{date:'2024-06-28',dept:'心理门诊',doc:'张明远 主任医师',dx:'焦虑障碍 · 建议2周后复诊调药'},{date:'2024-05-15',dept:'精神科门诊',doc:'王建国 主任医师',dx:'双相情感障碍 · 丙戊酸钠维持治疗'},{date:'2024-03-02',dept:'心理门诊',doc:'张明远 主任医师',dx:'抑郁发作 · 舍曲林起始治疗'}],
+    [{date:'2024-06-28',dept:'心理门诊',doc:'张明远 主任医师',dx:'焦虑障碍',
+      rx:[{name:'盐酸舍曲林片',spec:'50mg×28片/盒',usage:'每日1次，每次1片',price:112.00},
+          {name:'奥氮平片',spec:'5mg×14片/盒',usage:'每晚1次，每次1片',price:98.00}],
+      checks:[{name:'血常规',dept:'检验科',status:'已出'},{name:'生化全套',dept:'检验科',status:'已出'}],
+      advice:'1. 继续舍曲林治疗，2周后复诊评估疗效。\n2. 奥氮平睡前服用，注意体重监测。\n3. 如出现情绪波动加重请及时联系医生。'},
+     {date:'2024-05-15',dept:'精神科门诊',doc:'王建国 主任医师',dx:'双相情感障碍',
+      rx:[{name:'丙戊酸钠缓释片',spec:'500mg×30片/盒',usage:'每日2次，每次1片',price:74.50}],
+      checks:[{name:'甲状腺功能',dept:'检验科',status:'已出'},{name:'心电图',dept:'功能检查科',status:'已出'}],
+      advice:'1. 丙戊酸钠维持当前剂量，切勿自行停药。\n2. 定期监测肝功能及血药浓度。\n3. 保持规律作息，避免熬夜诱发情绪波动。'},
+     {date:'2024-03-02',dept:'心理门诊',doc:'张明远 主任医师',dx:'抑郁发作',
+      rx:[{name:'劳拉西泮片',spec:'0.5mg×20片/盒',usage:'必要时1片',price:45.00}],
+      checks:[{name:'脑电图',dept:'神经电生理室',status:'已出'}],
+      advice:'1. 舍曲林起始剂量50mg/日，1周后视耐受情况调整。\n2. 劳拉西泮仅限焦虑急性发作时使用，避免长期依赖。\n3. 建议配合心理咨询每周一次。'}],
     [{name:'血常规',patient:'李华',time:'2024-06-28 09:15',status:'已出'},{name:'生化全套',patient:'李华',time:'2024-06-28 09:15',status:'已出'},{name:'甲状腺功能',patient:'李华',time:'2024-06-15 14:30',status:'已出'}],
     [{name:'心电图',patient:'李华',time:'2024-06-28 10:00',status:'已出'},{name:'脑电图',patient:'李华',time:'2024-06-20 08:30',status:'已出'}],
     [{name:'胸部CT',patient:'李华',time:'2024-05-15 11:00',status:'已出'}]
@@ -1633,7 +1677,7 @@
     if(!el) return;
     var data = s9Date[s9tab]||[];
     if(s9tab===0){
-      el.innerHTML = data.map(function(r){ return '<div class="card recard"><div class="re-top"><span class="re-date">'+r.date+'</span><span class="re-dept">'+r.dept+'</span></div><div class="re-doc">'+r.doc+'</div><div class="re-dx">'+r.dx+'</div></div>'; }).join('')+'<div style="height:10px;"></div>';
+      el.innerHTML = data.map(function(r,i){ return '<div class="card recard" style="cursor:pointer;" onclick="openVisitDetail('+i+')"><div class="re-top"><span class="re-date">'+r.date+'</span><span class="re-dept">'+r.dept+'</span><span style="font-size:10px;color:var(--faint);margin-left:auto;flex:none;">详情 ›</span></div><div class="re-doc">'+r.doc+'</div></div>'; }).join('')+'<div style="height:10px;"></div>';
     } else {
       el.innerHTML = data.map(function(r,i){
         var tabIdx = s9tab;
@@ -1659,6 +1703,41 @@
     go('s31');
   }
   renderS9();
+
+  function openVisitDetail(i){
+    var v = s9Date[0][i];
+    document.getElementById('s35-title').textContent = '就诊记录详情';
+    document.getElementById('s35-date').textContent = v.date;
+    document.getElementById('s35-dept').textContent = v.dept;
+    document.getElementById('s35-doc').textContent = v.doc;
+    // 处方信息
+    if(v.rx && v.rx.length>0){
+      document.getElementById('s35-rx-card').style.display = '';
+      document.getElementById('s35-rx').innerHTML = v.rx.map(function(d){
+        return '<div style="padding:8px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;">'
+          +'<div><div style="font-size:14px;font-weight:600;color:var(--ink);">'+d.name+'</div><div style="font-size:10px;color:var(--sub);">'+d.spec+' · '+d.usage+'</div></div>'
+          +'<div style="text-align:right;"><span style="font-size:13px;font-weight:600;color:var(--ink);">¥'+d.price.toFixed(2)+'</span></div>'
+          +'</div>';
+      }).join('');
+    } else { document.getElementById('s35-rx-card').style.display = 'none'; }
+    // 检查项目
+    if(v.checks && v.checks.length>0){
+      document.getElementById('s35-check-card').style.display = '';
+      document.getElementById('s35-check').innerHTML = v.checks.map(function(c){
+        var sc = c.status==='已出'?'var(--ok)':'var(--faint)';
+        return '<div style="padding:8px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;">'
+          +'<div style="font-size:14px;font-weight:600;color:var(--ink);">'+c.name+'</div>'
+          +'<div style="font-size:11px;color:var(--sub);">'+c.dept+' · <span style="color:'+sc+';">'+c.status+'</span></div>'
+          +'</div>';
+      }).join('');
+    } else { document.getElementById('s35-check-card').style.display = 'none'; }
+    // 医嘱
+    if(v.advice){
+      document.getElementById('s35-advice-card').style.display = '';
+      document.getElementById('s35-advice').innerHTML = '<div style="font-size:13px;color:var(--ink);line-height:1.8;white-space:pre-line;">'+v.advice+'</div>';
+    } else { document.getElementById('s35-advice-card').style.display = 'none'; }
+    go('s35');
+  }
 
   // ───── s10 处方列表（历史处方列表，点击详情→s34处方详情）─────
 
@@ -1752,17 +1831,27 @@
   function renderS23(){
     var el=document.getElementById('s23-list');if(!el)return;
     var data=s23tab===0?s23AllCur:s23Hist;
-    el.innerHTML=data.map(function(b,i){var paid=b.paid!==false;
+    el.innerHTML = data.map(function(b,i){var paid=b.paid!==false;
+      var stColor = !paid?'var(--warn)':(s23tab===0?'var(--ac-blue)':'var(--faint)');
+      var stText = !paid ? '待支付' : (s23tab===0 ? '待就诊' : '已结束');
+      var topBg = 'var(--purple-soft)';
+      var topText = 'var(--purple)';
       var rows='<div class="rowkv rowkv-sm"><span class="k">医生</span><span class="v">'+b.name+' '+b.title+'</span></div><div class="rowkv rowkv-sm"><span class="k">类别</span><span class="v">'+b.type+'</span></div><div class="rowkv rowkv-sm"><span class="k">就诊时间</span><span class="v">'+b.dateStr+' '+b.timeStr+'</span></div><div class="rowkv rowkv-sm"><span class="k">就诊人</span><span class="v">李华</span></div><div class="rowkv rowkv-sm"><span class="k">就诊序号</span><span class="v bold">'+b.seq+'</span></div><div class="rowkv rowkv-sm"><span class="k">挂号费用</span><span class="v red bold">¥50</span></div>';
-      var extra=paid?'<div class="rowkv rowkv-sm"><span class="k">候诊地点</span><span class="v">门诊楼 3 层 心理门诊</span></div><div class="rowkv rowkv-sm"><span class="k">挂号状态</span><span class="v" style="color:var(--ok);">已支付 · 待就诊</span></div>':'';
-      var bTicketed=b.ticketed||false,bChecked=b.checked||false;
-      var btn=function(t,a){return '<button style="flex:1;font-size:11px;padding:7px 0;background:#fff;color:var(--purple);border:none;border-radius:var(--r-sm);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.08);font-weight:500;" onclick="event.stopPropagation();'+a+'">'+t+'</button>'};
-      var tkt='';
-      if(bChecked)tkt='<button style="flex:1;font-size:11px;padding:7px 0;background:#fff;color:var(--ok);border:none;border-radius:var(--r-sm);box-shadow:0 2px 8px rgba(0,0,0,.08);font-weight:500;pointer-events:none;">已签到</button>';
-      else if(bTicketed)tkt='<button style="flex:1;font-size:11px;padding:7px 0;background:#fff;color:var(--purple);border:none;border-radius:var(--r-sm);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.08);font-weight:500;" onclick="event.stopPropagation();s23CheckIn('+i+')">签到报到</button>';
-      else tkt='<button style="flex:1;font-size:11px;padding:7px 0;background:#fff;color:var(--purple);border:none;border-radius:var(--r-sm);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.08);font-weight:500;" onclick="event.stopPropagation();s23GetTicket('+i+')">立即取号</button>';
-      var btns=s23tab===0?'<div style="display:flex;gap:6px;margin-top:10px;">'+btn('取消挂号','')+btn('立即支付','s23OpenPay('+i+')')+tkt+btn('全流程导诊','go(\'s12\')')+'</div>':'';
-      return '<div class="card" style="cursor:pointer;" onclick="lastPaid='+paid+';go(\'s7\')">'+(paid?'':'<div class="banner" style="margin:0 0 10px 0;">订单待支付，请在 14:32 前完成支付</div>')+rows+extra+btns+'</div>';
+      var extra=paid?'<div class="rowkv rowkv-sm"><span class="k">候诊地点</span><span class="v">门诊楼 3 层 心理门诊</span></div>':'';
+      var banner=paid?'':'<div class="banner" style="margin:0 0 10px 0;">订单待支付，请在 14:32 前完成支付</div>';
+      var btn=function(t,a){return '<button class="btn-pill" style="flex:1;font-size:11px;color:'+topText+';" onclick="event.stopPropagation();'+a+'">'+t+'</button>'};
+      var btns='';
+      if(s23tab===0){
+        btns='<div style="display:flex;gap:6px;padding:0 14px 12px;">'+btn('取消挂号','')+btn('立即支付','s23OpenPay('+i+')')+btn('全流程导诊','go(\'s12\')')+'</div>';
+      } else {
+        btns='<div style="display:flex;gap:6px;padding:0 14px 12px;">'+btn('查看详情','go(\'s7\')')+'</div>';
+      }
+      return '<div class="card" style="padding:0;margin-bottom:8px;overflow:hidden;cursor:pointer;" onclick="lastPaid='+paid+';if(s23tab===1)go(\'s7\')">'
+        +'<div style="padding:10px 14px;background:'+topBg+';box-shadow:0 1px 3px rgba(0,0,0,.04);display:flex;justify-content:space-between;align-items:center;">'
+        +'<span style="font-size:14px;font-weight:600;color:'+topText+';">挂号预约</span>'
+        +'<span style="font-size:11px;color:'+stColor+';font-weight:600;">'+stText+'</span></div>'
+        +'<div style="padding:8px 14px;">'+banner+rows+extra+'</div>'
+        +btns+'</div>';
     }).join('')+'<div style="height:10px;"></div>';
   }
   function s23OpenPay(i){s23PayingIdx=i;document.getElementById('billMask').classList.add('on');}
@@ -1781,7 +1870,9 @@
   }
 
   let bookings = [];
-  let flowTicketed = false, flowCheckedIn = false, flowCurrentNode = 0, flowPaid = false;
+  let flowTicketed = false, flowCheckedIn = false, flowCurrentNode = 1, flowPaid = false;
+  // 默认展示候诊节点
+  document.querySelectorAll('#flow-line .nd').forEach(function(el,i){ el.classList.toggle('on', i===1); });
 
   const guideOp = [
     {step:'挂号预约', detail: function(){
@@ -1811,26 +1902,42 @@
       const docName = b ? (b.name+' '+b.title) : '张明远 主任医师';
       const seq = b ? b.seq : '0012';
       let rows = `<div class="rowkv rowkv-sm"><span class="k">医生</span><span class="v">${docName}</span></div>
-        <div class="rowkv rowkv-sm"><span class="k">就诊序号</span><span class="v bold">${seq}</span></div>
-        <div class="rowkv rowkv-sm"><span class="k">排队号</span><span class="v bold" style="color:var(--purple);">A-013</span></div>
-        <div class="rowkv rowkv-sm"><span class="k">前方等待</span><span class="v" style="color:var(--warn);">3 人</span></div>
-        <div class="rowkv rowkv-sm"><span class="k">预计就诊</span><span class="v">约 09:15</span></div>`;
+        <div class="rowkv rowkv-sm"><span class="k">就诊序号</span><span class="v bold">${seq}</span></div>`;
       let action = '';
       if(!flowTicketed && !flowCheckedIn){
-        action = `<div style="margin-top:10px;"><button class="btn primary" style="width:100%;font-size:14px;padding:12px;" onclick="s12GetTicket()">取号</button></div>`;
+        action = `<div style="margin-top:10px;"><button class="btn primary" style="width:100%;font-size:14px;padding:12px;" onclick="flowCheckIn()">签到报到</button></div>
+          <div style="font-size:11px;color:var(--faint);text-align:center;margin-top:6px;">需在医院范围内完成签到</div>`;
       } else if(flowTicketed && !flowCheckedIn){
         action = `<div style="margin-top:6px;font-size:12px;color:var(--ok);text-align:center;">已取号 · 请在医院范围内签到</div>
-          <div style="margin-top:8px;"><button class="btn primary" style="width:100%;font-size:14px;padding:12px;" onclick="s12CheckIn()">签到报到</button></div>`;
+          <div style="margin-top:8px;"><button class="btn primary" style="width:100%;font-size:14px;padding:12px;" onclick="flowCheckIn()">签到报到</button></div>`;
       } else {
         action = `<div style="margin-top:10px;color:var(--ok);font-size:15px;font-weight:600;text-align:center;">已签到 · 等待叫号</div>`;
       }
       return `<div class="card" style="margin:0;padding:12px;">${rows}</div>${action}<div style="margin-top:8px;font-size:12px;color:var(--sub);text-align:center;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> 门诊楼 3 层 心理门诊</div>`;
     }},
     {step:'医生就诊', detail: function(){
-      return `<div class="card" style="margin:0;padding:12px;background:var(--page);">
-        <div style="font-size:13px;color:var(--sub);">当前状态</div>
-        <div style="font-size:15px;font-weight:600;color:var(--ink);margin-top:4px;">待就诊 · 请候诊叫号</div>
-        <div style="font-size:12px;color:var(--sub);margin-top:8px;line-height:1.7;">精神科初诊请家属陪同，携带既往病历资料。医生将进行精神检查并开具检查/检验/处方。</div>
+      const b = bookings.length>0 ? bookings[0] : null;
+      const docName = b ? (b.name+' '+b.title) : '张明远 主任医师';
+      const seq = b ? b.seq : '0012';
+      const dateStr = b ? b.dateStr : '06-28 周日';
+      const timeStr = b ? b.timeStr : '09:00-09:30';
+      return `<div class="card" style="margin:0;padding:12px;">
+        <div class="sectitle">挂号信息</div>
+        <div class="rowkv rowkv-sm"><span class="k">医生</span><span class="v">${docName}</span></div>
+        <div class="rowkv rowkv-sm"><span class="k">就诊时间</span><span class="v">${dateStr} ${timeStr}</span></div>
+        <div class="rowkv rowkv-sm"><span class="k">就诊序号</span><span class="v bold">${seq}</span></div>
+        <div style="border-top:1px dashed var(--line);margin:8px 0;"></div>
+        <div class="sectitle">处方信息</div>
+        <div class="rowkv rowkv-sm"><span class="k">盐酸舍曲林片</span><span class="v">50mg×28片</span></div>
+        <div class="rowkv rowkv-sm"><span class="k">奥氮平片</span><span class="v">5mg×14片</span></div>
+        <div style="border-top:1px dashed var(--line);margin:8px 0;"></div>
+        <div class="sectitle">检查信息</div>
+        <div class="rowkv rowkv-sm"><span class="k">血常规</span><span class="v" style="color:var(--ok);">已出</span></div>
+        <div class="rowkv rowkv-sm"><span class="k">生化全套</span><span class="v" style="color:var(--ok);">已出</span></div>
+      </div>
+      <div class="card" style="margin:10px 0 0 0;">
+        <div class="sectitle">注意事项</div>
+        <div class="notice">就诊后请遵医嘱按时服药、定期复诊。如有不适请及时联系主治医生。检查报告可在「诊疗资料-报告」中查看。</div>
       </div>`;
     }},
     {step:'缴费', detail: function(){
@@ -2030,16 +2137,12 @@
           <div class="fc-body" style="font-size:12px;">
             <div class="fc-name" style="margin-bottom:6px;">${docName}</div>
             <div class="fc-row"><span class="fck">就诊序号</span><span class="fcv bold">${seq}</span></div>
-            <div class="fc-row"><span class="fck">排队号</span><span class="fcv bold" style="color:var(--purple);">A-013</span></div>
-            <div class="fc-row"><span class="fck">前方等待</span><span class="fcv" style="color:var(--warn);">3 人</span></div>
-            <div class="fc-row"><span class="fck">预计就诊</span><span class="fcv">约 09:15</span></div>
           </div>
           <span class="fc-more" onclick="event.stopPropagation();goS12()">详情 →</span>
         </div>`;
-        if(!flowTicketed && !flowCheckedIn){
-          html += `<div style="display:flex;gap:8px;margin-top:4px;"><button class="btn primary" style="flex:1;font-size:11px;padding:8px;" onclick="flowGetTicket()">取号</button></div>`;
-        } else if(flowTicketed && !flowCheckedIn){
-          html += `<div style="text-align:center;margin-top:4px;font-size:11px;color:var(--ok);">已取号 · 请留意叫号</div><div style="margin-top:6px;"><button class="btn primary" style="width:100%;font-size:11px;padding:8px;" onclick="flowCheckIn()">签到报到</button></div>`;
+        if(!flowCheckedIn){
+          html += `<div style="margin-top:6px;"><button class="btn primary" style="width:100%;font-size:11px;padding:8px;" onclick="flowCheckIn()">签到报到</button></div>
+            <div style="font-size:10px;color:var(--faint);text-align:center;margin-top:4px;">需在医院范围内完成签到</div>`;
         } else {
           html += `<div style="text-align:center;color:var(--ok);font-weight:600;font-size:12px;margin-top:4px;">已签到 · 等待叫号</div>`;
         }
@@ -2076,7 +2179,7 @@
     });
     bookings.sort((a,b)=>a.dateStr.localeCompare(b.dateStr)||a.timeStr.localeCompare(b.timeStr));
     flowCurrentNode = 0;
-    document.querySelectorAll('#flow-line .nd').forEach((el,i)=>el.classList.toggle('on', i===0));
+    document.querySelectorAll('#flow-line .nd').forEach(function(el,i){ el.classList.toggle('on', i===0); });
     renderFlowDetail();
   }
 
@@ -2091,9 +2194,13 @@
     renderFlowDetail();
   }
   function flowCheckIn(){
+    if(!confirm('签到需要确认您在紫荆安康医院附近。\n\n请确保已开启手机定位功能。\n\n确定进行签到报到？')) return;
     if(!flowTicketed){ flowTicketed = true; }
     flowCheckedIn = true;
+    flowCurrentNode = 1;
+    document.querySelectorAll('#flow-line .nd').forEach(function(el,i){ el.classList.toggle('on', i===1); });
     renderFlowDetail();
+    addNoti('候诊', '签到成功。就诊序号 0012，请在候诊区等待叫号。','purple');
   }
 
   // ───── 首页Banner轮播 ─────
