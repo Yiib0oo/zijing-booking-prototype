@@ -430,26 +430,29 @@
   <a data-go="s21"><span class="n">费</span>门诊缴费</a>
   <div class="grp">门诊扩展</div>
   <a data-go="s9"><span class="n">诊</span>诊疗资料</a>
+  <a data-go="s31"><span class="n">报</span>报告查看</a>
   <a data-go="s23"><span class="n">列</span>挂号列表</a>
   <a data-go="s33"><span class="n">缴</span>缴费查询</a>
   <a data-go="s29"><span class="n">复</span>复诊预约</a>
   <div class="grp">全流程导诊</div>
   <a data-go="s12"><span class="n">导</span>全流程导诊</a>
   <div class="grp">住院板块</div>
-  <a onclick="alert('住院模块一期暂未开放，敬请期待')"><span class="n">入</span>住院单</a>
-  <a onclick="alert('住院模块一期暂未开放，敬请期待')"><span class="n">预</span>住院预存</a>
-  <a onclick="alert('住院模块一期暂未开放，敬请期待')"><span class="n">餐</span>营养订餐</a>
-  <a onclick="alert('住院模块一期暂未开放，敬请期待')"><span class="n">结</span>出院结算</a>
+  <a onclick="alert('住院模块一期暂未开放，敬请期待')" style="color:var(--faint);"><span class="n" style="background:#E8E8EC;color:var(--faint);">入</span>住院单</a>
+  <a onclick="alert('住院模块一期暂未开放，敬请期待')" style="color:var(--faint);"><span class="n" style="background:#E8E8EC;color:var(--faint);">预</span>住院预存</a>
+  <a onclick="alert('住院模块一期暂未开放，敬请期待')" style="color:var(--faint);"><span class="n" style="background:#E8E8EC;color:var(--faint);">餐</span>营养订餐</a>
+  <a onclick="alert('住院模块一期暂未开放，敬请期待')" style="color:var(--faint);"><span class="n" style="background:#E8E8EC;color:var(--faint);">结</span>出院结算</a>
   <div class="grp">检查</div>
   <a data-go="s20"><span class="n">检</span>检查缴费</a>
   <div class="grp">取药</div>
-  <a data-go="s10"><span class="n">方</span>处方查询</a>
+  <a data-go="s10"><span class="n">列</span>处方列表</a>
+  <a data-go="s34"><span class="n">方</span>处方详情</a>
   <a data-go="s22"><span class="n">取</span>取药缴费</a>
-  <a onclick="alert('住院模块一期暂未开放，敬请期待')"><span class="n">药</span>出院带药</a>
+  <a onclick="alert('住院模块一期暂未开放，敬请期待')" style="color:var(--faint);"><span class="n" style="background:#E8E8EC;color:var(--faint);">药</span>出院带药</a>
   <div class="grp">其他</div>
   <a data-go="s18"><span class="n">知</span>通知中心</a>
   <a data-go="s19"><span class="n">品</span>品牌故事</a>
   <a data-go="s99"><span class="n">我</span>我的</a>
+  <a data-go="s25"><span class="n">卡</span>业务信息卡片</a>
   <a data-go="s26"><span class="n">设</span>设置</a>
   <a data-go="s32"><span class="n">账</span>账号设置</a>
   <a data-go="s27"><span class="n">添</span>添加就诊人</a>
@@ -464,10 +467,10 @@
   <a data-go="s0" onclick="go('s0')"><span class="n">f</span>简版预约信息</a>
   <a data-go="s12" onclick="go('s12')"><span class="n">g</span>导航板块</a>
   <a data-go="s10" onclick="go('s10')"><span class="n">h</span>处方卡片</a>
-  <a onclick="alert('住院模块一期暂未开放')"><span class="n">j</span>费用明细</a>
-  <a onclick="alert('住院模块一期暂未开放')"><span class="n">k</span>住院信息</a>
-  <a onclick="alert('住院模块一期暂未开放')"><span class="n">l</span>营养订餐</a>
-  <a onclick="alert('住院模块一期暂未开放')"><span class="n">n</span>出院带药</a>
+  <a onclick="alert('住院模块一期暂未开放')" style="color:var(--faint);"><span class="n" style="background:#E8E8EC;color:var(--faint);">j</span>费用明细</a>
+  <a onclick="alert('住院模块一期暂未开放')" style="color:var(--faint);"><span class="n" style="background:#E8E8EC;color:var(--faint);">k</span>住院信息</a>
+  <a onclick="alert('住院模块一期暂未开放')" style="color:var(--faint);"><span class="n" style="background:#E8E8EC;color:var(--faint);">l</span>营养订餐</a>
+  <a onclick="alert('住院模块一期暂未开放')" style="color:var(--faint);"><span class="n" style="background:#E8E8EC;color:var(--faint);">n</span>出院带药</a>
   <div class="grp">弹窗</div>
   <a data-go="s6" onclick="go('s6')"><span class="n">1</span>支付弹窗</a>
   <a data-go="s7" onclick="go('s7')"><span class="n">2</span>挂号详情界面</a>
@@ -793,19 +796,13 @@
       </div>
     </section>
 
-    <!-- ========== 10 处方查询 ========== -->
+    <!-- ========== 10 处方列表 ========== -->
     <section class="screen" id="s10">
       <div class="statusbar"><span>9:41</span><span>● ● ●</span></div>
-      <div class="topbar"><div class="back" onclick="hist()">‹</div><div class="ttl">处方查询</div><div class="mini"><i>●●●</i><i>◉</i></div></div>
-      <div class="body" style="display:flex;flex-direction:column;">
-        <div class="tabs" style="margin-top:12px;flex:none;" id="s10-tabs">
-          <span class="on" onclick="s10Tab(0)">门诊处方</span>
-          <span onclick="s10Tab(1)">出院带药</span>
-        </div>
-        <div style="flex:1;overflow-y:auto;" id="s10-list"></div>
-        <div style="flex:none;padding:12px 16px;border-top:1px solid var(--line);background:#fff;display:flex;justify-content:center;" id="s10-foot">
-          <button class="btn-pill primary" onclick="s10Confirm()" style="width:calc(100% - 32px);padding:12px;font-size:15px;" id="s10-btn">确认续方</button>
-        </div>
+      <div class="topbar"><div class="back" onclick="hist()">‹</div><div class="ttl">处方列表</div><div class="mini"><i>●●●</i><i>◉</i></div></div>
+      <div class="body">
+        <div id="s10-list"></div>
+        <div style="height:10px;"></div>
       </div>
     </section>
 
@@ -1123,29 +1120,106 @@
       </div>
     </section>
 
-    <!-- ========== 34 缴费详情 ========== -->
+    <!-- ========== 34 缴费详情/处方详情 ========== -->
     <section class="screen" id="s34">
       <div class="statusbar"><span>9:41</span><span>● ● ●</span></div>
       <div class="topbar"><div class="back" onclick="hist()">‹</div><div class="ttl" id="s34-title">缴费详情</div><div class="mini"><i>●●●</i><i>◉</i></div></div>
       <div class="body">
+        <!-- 第一部分：基本信息卡片 -->
         <div class="card" style="margin-top:12px;" id="s34-card">
           <div class="sectitle" id="s34-type">-</div>
           <div class="rowkv"><span class="k">金额</span><span class="v red bold" id="s34-amount">-</span></div>
+          <div class="rowkv" id="s34-doc-row" style="display:none;"><span class="k">医生</span><span class="v" id="s34-doc">-</span></div>
+          <div class="rowkv" id="s34-pat-row" style="display:none;"><span class="k">就诊人</span><span class="v" id="s34-pat">-</span></div>
           <div class="rowkv"><span class="k">时间</span><span class="v" id="s34-time">-</span></div>
-          <div class="rowkv"><span class="k">支付方式</span><span class="v" id="s34-method">微信支付</span></div>
-          <div class="rowkv"><span class="k">状态</span><span class="v" id="s34-status" style="color:var(--ok);font-weight:600;">已支付</span></div>
         </div>
-        <div class="card">
+        <!-- 第二部分：药品明细 + 医嘱（处方详情专用） -->
+        <div class="card" id="s34-drugs-card" style="display:none;">
+          <div class="sectitle">药品明细</div>
+          <div id="s34-drugs"></div>
+          <div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);">
+            <div class="rowkv"><span class="k" style="color:var(--ink);">合计</span><span class="v red bold" id="s34-total">-</span></div>
+          </div>
+          <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--line);">
+            <div style="font-size:12px;font-weight:600;color:var(--ink);margin-bottom:6px;">用药医嘱</div>
+            <div id="s34-advice"></div>
+          </div>
+        </div>
+        <div class="card" id="s34-detail-card">
           <div class="sectitle">明细</div>
           <div id="s34-detail"></div>
         </div>
-        <div class="card">
+        <!-- 第三部分：注意事项 -->
+        <div class="card" id="s34-notice-card">
           <div class="sectitle">注意事项</div>
           <div class="notice">如需开具发票，请于就诊后30日内凭缴费凭证到收费窗口或线上自助办理。电子发票与纸质发票具有同等法律效力。</div>
         </div>
-        <div style="text-align:center;padding:12px 16px;">
-          <button class="btn-pill primary" onclick="alert('电子发票已发送至您绑定的手机号')" style="width:calc(100% - 32px);padding:12px;font-size:15px;">开具发票</button>
+        <div style="height:10px;"></div>
+      </div>
+    </section>
+
+    <!-- ========== 25 业务信息卡片 ========== -->
+    <section class="screen" id="s25">
+      <div class="statusbar"><span>9:41</span><span>● ● ●</span></div>
+      <div class="topbar"><div class="back" onclick="hist()">‹</div><div class="ttl">业务信息卡片</div><div class="mini"><i>●●●</i><i>◉</i></div></div>
+      <div class="body">
+        <div style="font-size:12px;color:var(--sub);padding:12px 18px 6px;">挂号 · 处方 · 检查 — 已支付详情</div>
+
+        <!-- ★ 挂号·已付·详情 -->
+        <div class="card" style="padding:14px;margin:12px 16px 10px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+            <span style="font-size:15px;font-weight:600;color:var(--purple);">挂号预约</span>
+            <span style="font-size:11px;color:var(--faint);white-space:nowrap;">2024-06-28 09:00</span>
+          </div>
+          <div class="rowkv rowkv-sm"><span class="k">医生</span><span class="v">张明远 主任医师</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">类别</span><span class="v">普通门诊</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">就诊时间</span><span class="v">06-28 周日 09:00-09:30</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">就诊人</span><span class="v">李华</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">就诊序号</span><span class="v bold">0012</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">挂号费用</span><span class="v red bold">¥50.00</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">候诊地点</span><span class="v">门诊楼 3 层 心理门诊</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">状态</span><span class="v" style="color:var(--ac-blue);font-weight:600;">待就诊</span></div>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <button class="btn-pill" style="flex:1;color:var(--purple);">查看详情</button>
+            <button class="btn-pill" style="flex:1;color:var(--purple);">全流程导诊</button>
+          </div>
         </div>
+
+        <!-- ★ 处方·已付·详情 -->
+        <div class="card" style="padding:14px;margin:0 16px 10px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+            <span style="font-size:15px;font-weight:600;color:var(--warn);">处方详情</span>
+            <span style="font-size:11px;color:var(--faint);white-space:nowrap;">2024-06-25 16:20</span>
+          </div>
+          <div class="rowkv rowkv-sm"><span class="k">处方编号</span><span class="v">RX628001</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">开方医生</span><span class="v">张明远</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">就诊人</span><span class="v">李华</span></div>
+          <div class="rowkv rowkv-sm"><span class="k" style="align-self:flex-start;">药品明细</span><span class="v" style="line-height:1.7;">盐酸舍曲林片 50mg×28片 ×1<br/>奥氮平片 5mg×14片 ×1<br/>丙戊酸钠缓释片 500mg×30片 ×1</span></div>
+          <div class="rowkv rowkv-sm" style="border-top:1px dashed var(--line);padding-top:8px;margin-top:4px;"><span class="k" style="color:var(--ink);">合计</span><span class="v red bold">¥446.50</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">状态</span><span class="v" style="color:var(--ok);font-weight:600;">已支付</span></div>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <button class="btn-pill" style="flex:1;color:var(--warn);">查看详情</button>
+          </div>
+        </div>
+
+        <!-- ★ 检查·已付·详情 -->
+        <div class="card" style="padding:14px;margin:0 16px 10px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">
+            <span style="font-size:15px;font-weight:600;color:var(--ac-blue);">检查报告</span>
+            <span style="font-size:11px;color:var(--faint);white-space:nowrap;">2024-06-28 10:00</span>
+          </div>
+          <div class="rowkv rowkv-sm"><span class="k">项目名称</span><span class="v">血常规 + 生化全套</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">科室</span><span class="v">检验科</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">检验人</span><span class="v">李华</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">采样时间</span><span class="v">06-28 08:30</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">检查费用</span><span class="v red bold">¥260.00</span></div>
+          <div class="rowkv rowkv-sm"><span class="k">状态</span><span class="v" style="color:var(--ok);font-weight:600;">已支付 · 结果已出</span></div>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <button class="btn-pill" style="flex:1;color:var(--ac-blue);">查看详情</button>
+            <button class="btn-pill" style="flex:1;color:var(--ac-blue);">查看报告</button>
+          </div>
+        </div>
+
         <div style="height:10px;"></div>
       </div>
     </section>
@@ -1586,182 +1660,85 @@
   }
   renderS9();
 
-  // ───── s10 处方查询（门诊处方 + 出院带药）─────
-  var s10CurTab = 0;
-  var s10OpenRx = 0;
+  // ───── s10 处方列表（历史处方列表，点击详情→s34处方详情）─────
 
   var s10Rx = [
-    {rxId:'RX628001',doc:'张明远',date:'2024-06-28',dx:'焦虑障碍',
+    {rxId:'RX628001',doc:'张明远',date:'2024-06-28',dx:'焦虑障碍',patient:'李华',
      drugs:[
-       {name:'盐酸舍曲林片',spec:'50mg×28片/盒',usage:'每日1次，每次1片',price:112.00,selected:false,qty:1},
-       {name:'奥氮平片',spec:'5mg×14片/盒',usage:'每晚1次，每次1片',price:98.00,selected:false,qty:1}
+       {name:'盐酸舍曲林片',spec:'50mg×28片/盒',usage:'每日1次，每次1片',price:112.00,qty:1},
+       {name:'奥氮平片',spec:'5mg×14片/盒',usage:'每晚1次，每次1片',price:98.00,qty:1}
      ]},
-    {rxId:'RX515001',doc:'王建国',date:'2024-05-15',dx:'双相情感障碍',
+    {rxId:'RX515001',doc:'王建国',date:'2024-05-15',dx:'双相情感障碍',patient:'李华',
      drugs:[
-       {name:'丙戊酸钠缓释片',spec:'500mg×30片/盒',usage:'每日2次，每次1片',price:74.50,selected:false,qty:1}
+       {name:'丙戊酸钠缓释片',spec:'500mg×30片/盒',usage:'每日2次，每次1片',price:74.50,qty:1}
      ]},
-    {rxId:'RX302001',doc:'张明远',date:'2024-03-02',dx:'抑郁发作',
+    {rxId:'RX302001',doc:'张明远',date:'2024-03-02',dx:'抑郁发作',patient:'李华',
      drugs:[
-       {name:'劳拉西泮片',spec:'0.5mg×20片/盒',usage:'必要时1片',price:45.00,selected:false,qty:1}
+       {name:'劳拉西泮片',spec:'0.5mg×20片/盒',usage:'必要时1片',price:45.00,qty:1}
      ]}
   ];
-
-  var s10DisDrugs = [
-    {name:'盐酸舍曲林片',spec:'50mg×28片/盒',usage:'每日1次 每次1片（早餐后）',qty:1,price:112.00},
-    {name:'丙戊酸钠缓释片',spec:'500mg×30片/盒',usage:'每日2次 每次1片（早晚餐后）',qty:1,price:74.50},
-    {name:'奥氮平片',spec:'5mg×14片/盒',usage:'每晚1次 每次1片（睡前）',qty:1,price:98.00},
-  ];
-
-  function s10Tab(t){
-    s10CurTab = t;
-    document.querySelectorAll('#s10-tabs span').forEach(function(s,i){ s.classList.toggle('on',i===t); });
-    document.getElementById('s10-btn').textContent = t===0 ? '确认续方' : '出院带药';
-    renderS10();
-  }
 
   function renderS10(){
     var el = document.getElementById('s10-list');
     if(!el) return;
-    if(s10CurTab===0){
-      // 门诊处方 tab — 复诊续方内容
-      el.innerHTML = s10Rx.map(function(rx, ri){
-        var open = ri===s10OpenRx;
-        var drugsHtml = rx.drugs.map(function(d, di){
-          var idx = ri+'_'+di;
-          return '<div class="card" style="padding:10px 12px;margin:0;border-radius:0;border-left:none;border-right:none;border-bottom:1px solid var(--line);">'
-            +'<div style="display:flex;align-items:center;gap:8px;">'
-            +'<input type="checkbox" id="s10-chk-'+idx+'" '+(d.selected?'checked':'')+' onchange="s10ToggleRxDrug(\''+idx+'\')" style="flex:none;width:16px;height:16px;accent-color:var(--purple);">'
-            +'<div style="flex:1;min-width:0;">'
-            +'<div style="font-size:13px;font-weight:600;color:var(--ink);">'+d.name+'</div>'
-            +'<div style="font-size:10px;color:var(--sub);">'+d.spec+' · '+d.usage+'</div>'
-            +'</div>'
-            +'<div style="flex:none;display:flex;align-items:center;gap:4px;">'
-            +'<button class="btn-pill" style="width:24px;height:24px;padding:0;font-size:14px;line-height:24px;" onclick="s10Qty(\''+idx+'\',-1)">−</button>'
-            +'<span style="font-size:13px;font-weight:600;min-width:16px;text-align:center;" id="s10-qty-'+idx+'">'+d.qty+'</span>'
-            +'<button class="btn-pill" style="width:24px;height:24px;padding:0;font-size:14px;line-height:24px;" onclick="s10Qty(\''+idx+'\',1)">+</button>'
-            +'</div>'
-            +'</div>'
-            +'<div style="text-align:right;margin-top:2px;font-size:11px;color:var(--sub);">¥<span style="font-weight:600;color:var(--ink);" id="s10-price-'+idx+'">'+(d.price*d.qty).toFixed(2)+'</span></div>'
-            +'</div>';
-        }).join('');
-        return '<div class="card" style="padding:0;margin-bottom:8px;overflow:hidden;">'
-          +'<div style="display:flex;align-items:center;padding:8px 14px;cursor:pointer;gap:6px;background:var(--purple);box-shadow:0 2px 6px rgba(108,91,166,.18);" onclick="s10ToggleRx('+ri+')">'
-          +'<div style="flex:1;min-width:0;font-size:12px;color:#fff;">诊断医生：'+rx.doc+'　诊断时间：'+rx.date+'</div>'
-          +'<span style="font-size:14px;color:rgba(255,255,255,.7);transition:transform .25s;'+(open?'transform:rotate(180deg);':'')+'">˅</span>'
-          +'</div>'
-          +'<div style="'+(open?'':'display:none;')+'">'+drugsHtml+'</div>'
+    el.innerHTML = s10Rx.map(function(rx, ri){
+      var drugsHtml = rx.drugs.map(function(d){
+        return '<div class="card" style="padding:10px 12px;margin:0;border-radius:0;border-left:none;border-right:none;border-bottom:1px solid var(--line);">'
+          +'<div style="font-size:13px;font-weight:600;color:var(--ink);">'+d.name+'</div>'
+          +'<div style="font-size:10px;color:var(--sub);margin-top:2px;">'+d.spec+'</div>'
+          +'<div style="font-size:10px;color:var(--ac-blue);margin-top:1px;">用法用量：'+d.usage+'</div>'
+          +'<div style="text-align:right;font-size:12px;color:var(--sub);margin-top:2px;">¥'+d.price.toFixed(2)+'</div>'
           +'</div>';
       }).join('');
-    } else {
-      // 出院带药 tab
-      el.innerHTML = s10DisDrugs.map(function(d, di){
-        return '<div class="card" style="padding:14px;">'
-          +'<div style="font-size:14px;font-weight:600;color:var(--ink);">'+d.name+'</div>'
-          +'<div style="font-size:11px;color:var(--sub);margin-top:4px;">'+d.spec+'</div>'
-          +'<div style="font-size:11px;color:var(--ac-blue);margin-top:2px;">用法用量：'+d.usage+'</div>'
-          +'<div style="text-align:right;font-size:13px;font-weight:600;color:var(--ink);margin-top:6px;">¥'+d.price.toFixed(2)+'</div>'
-          +'</div>';
-      }).join('');
-    }
+      return '<div class="card" style="padding:0;margin-bottom:8px;overflow:hidden;">'
+        +'<div style="padding:8px 14px;background:var(--purple);box-shadow:0 2px 6px rgba(108,91,166,.18);display:flex;justify-content:space-between;align-items:center;">'
+        +'<div style="font-size:12px;color:#fff;">诊断医生：'+rx.doc+'　诊断时间：'+rx.date+'</div>'
+        +'<span style="font-size:11px;color:rgba(255,255,255,.7);cursor:pointer;" onclick="showRxDetail('+ri+')">详情 ›</span>'
+        +'</div>'
+        +'<div>'+drugsHtml+'</div>'
+        +'</div>';
+    }).join('');
   }
 
-  function s10ToggleRx(ri){
-    s10OpenRx = (s10OpenRx===ri) ? -1 : ri;
-    renderS10();
-  }
+  function showRxDetail(ri){
+    var rx = s10Rx[ri];
+    var total = rx.drugs.reduce(function(s,d){return s + d.price*d.qty;}, 0);
+    document.getElementById('s34-title').textContent = '处方详情';
 
-  function s10RxDrugByIdx(idx){
-    var parts = idx.split('_');
-    return s10Rx[parseInt(parts[0])].drugs[parseInt(parts[1])];
-  }
+    // 第一部分：基本信息（处方编号+医生+就诊人+时间，不含合计）
+    document.getElementById('s34-type').textContent = '处方 '+rx.rxId;
+    document.getElementById('s34-amount').parentElement.style.display = 'none';
+    document.getElementById('s34-time').textContent = rx.date;
+    document.getElementById('s34-doc-row').style.display = '';
+    document.getElementById('s34-pat-row').style.display = '';
+    document.getElementById('s34-doc').textContent = rx.doc;
+    document.getElementById('s34-pat').textContent = rx.patient;
 
-  function s10ToggleRxDrug(idx){
-    var d = s10RxDrugByIdx(idx);
-    d.selected = !d.selected;
-    renderS10();
-  }
+    // 第二部分：药品明细 + 医嘱
+    document.getElementById('s34-drugs-card').style.display = '';
+    document.getElementById('s34-detail-card').style.display = 'none';
+    document.getElementById('s34-drugs').innerHTML = rx.drugs.map(function(d){
+      return '<div style="padding:10px 0;border-bottom:1px solid var(--line);">'
+        +'<div style="display:flex;justify-content:space-between;align-items:flex-start;">'
+        +'<div style="flex:1;">'
+        +'<div style="font-size:15px;font-weight:600;color:var(--ink);">'+d.name+'</div>'
+        +'<div style="font-size:11px;color:var(--sub);margin-top:2px;">'+d.spec+'</div>'
+        +'</div>'
+        +'<div style="text-align:right;flex:none;">'
+        +'<div style="font-size:15px;font-weight:600;color:var(--ink);">¥'+d.price.toFixed(2)+'</div>'
+        +'<div style="font-size:11px;color:var(--sub);margin-top:2px;">×'+d.qty+'</div>'
+        +'</div>'
+        +'</div>'
+        +'</div>';
+    }).join('');
+    document.getElementById('s34-total').textContent = '¥'+total.toFixed(2);
+    document.getElementById('s34-advice').innerHTML = rx.drugs.map(function(d){
+      return '<div style="padding:5px 0;font-size:13px;color:var(--ink);">'+d.name+'：'+d.usage+'</div>';
+    }).join('')
+      +'<div style="margin-top:6px;font-size:11px;color:var(--sub);">请严格按医嘱用药，不可自行增减剂量或停药。如有不适请及时联系主治医生。</div>';
 
-  function s10Qty(idx, delta){
-    var d = s10RxDrugByIdx(idx);
-    d.qty = Math.max(1, d.qty + delta);
-    document.getElementById('s10-qty-'+idx).textContent = d.qty;
-    document.getElementById('s10-price-'+idx).textContent = (d.price * d.qty).toFixed(2);
-  }
-
-  function s10Confirm(){
-    if(s10CurTab===0){
-      // 门诊处方 → 确认续方
-      var sel = [];
-      for(var ri=0;ri<s10Rx.length;ri++){
-        for(var di=0;di<s10Rx[ri].drugs.length;di++){
-          var d = s10Rx[ri].drugs[di];
-          if(d.selected) sel.push(d);
-        }
-      }
-      if(sel.length===0){ alert('请至少选择一种药品'); return; }
-      var total = sel.reduce(function(s,d){return s + d.price*d.qty;}, 0);
-      var billContent = document.getElementById('billContent');
-      billContent.innerHTML = sel.map(function(d){
-        return '<div class="rowkv rowkv-sm"><span class="k">'+d.name+' ×'+d.qty+'</span><span class="v">¥'+(d.price*d.qty).toFixed(2)+'</span></div>';
-      }).join('')
-        +'<div class="rowkv rowkv-sm" style="font-weight:700;border-top:2px solid var(--ink);padding-top:8px;margin-top:4px;"><span class="k" style="color:var(--ink);">合计</span><span class="v red bold">¥'+total.toFixed(2)+'</span></div>';
-      document.getElementById('billTitle').textContent = '复诊续方';
-      document.getElementById('billBtn').textContent = '确认支付 ¥'+total.toFixed(2);
-      document.getElementById('billBtn').onclick = function(){
-        closeBill();
-        var now = new Date();
-        var timeStr = ('0'+(now.getMonth()+1)).slice(-2)+'-'+('0'+now.getDate()).slice(-2)+' '+('0'+now.getHours()).slice(-2)+':'+('0'+now.getMinutes()).slice(-2);
-        document.getElementById('s34-title').textContent = '处方缴费';
-        document.getElementById('s34-type').textContent = '处方缴费';
-        document.getElementById('s34-amount').textContent = '¥'+total.toFixed(2);
-        document.getElementById('s34-time').textContent = timeStr;
-        document.getElementById('s34-method').textContent = '微信支付';
-        document.getElementById('s34-status').textContent = '已支付';
-        document.getElementById('s34-status').style.color = 'var(--ok)';
-        var drugsList = sel.map(function(d){return d.name+' ×'+d.qty;}).join('、');
-        var docNames = [];
-        for(var ri2=0;ri2<s10Rx.length;ri2++){
-          for(var di2=0;di2<s10Rx[ri2].drugs.length;di2++){
-            if(s10Rx[ri2].drugs[di2].selected && docNames.indexOf(s10Rx[ri2].doc)===-1) docNames.push(s10Rx[ri2].doc);
-          }
-        }
-        document.getElementById('s34-detail').innerHTML =
-          '<div class="rowkv rowkv-sm"><span class="k">药品</span><span class="v">'+drugsList+'</span></div>'
-          +'<div class="rowkv rowkv-sm"><span class="k">开方医生</span><span class="v">'+docNames.join('、')+'</span></div>'
-          +'<div class="rowkv rowkv-sm"><span class="k">备注</span><span class="v" style="font-size:11px;color:var(--sub);">续方订单 · 请按医嘱服用</span></div>';
-        go('s34');
-      };
-      openBill();
-    } else {
-      // 出院带药 → 确认出院带药
-      var total2 = s10DisDrugs.reduce(function(s,d){return s + d.price;}, 0);
-      var billContent2 = document.getElementById('billContent');
-      billContent2.innerHTML = s10DisDrugs.map(function(d){
-        return '<div class="rowkv rowkv-sm"><span class="k">'+d.name+'</span><span class="v">¥'+d.price.toFixed(2)+'</span></div>';
-      }).join('')
-        +'<div class="rowkv rowkv-sm" style="font-weight:700;border-top:2px solid var(--ink);padding-top:8px;margin-top:4px;"><span class="k" style="color:var(--ink);">合计</span><span class="v red bold">¥'+total2.toFixed(2)+'</span></div>';
-      document.getElementById('billTitle').textContent = '出院带药';
-      document.getElementById('billBtn').textContent = '确认支付 ¥'+total2.toFixed(2);
-      document.getElementById('billBtn').onclick = function(){
-        closeBill();
-        var now2 = new Date();
-        var timeStr2 = ('0'+(now2.getMonth()+1)).slice(-2)+'-'+('0'+now2.getDate()).slice(-2)+' '+('0'+now2.getHours()).slice(-2)+':'+('0'+now2.getMinutes()).slice(-2);
-        document.getElementById('s34-title').textContent = '出院带药';
-        document.getElementById('s34-type').textContent = '出院带药';
-        document.getElementById('s34-amount').textContent = '¥'+total2.toFixed(2);
-        document.getElementById('s34-time').textContent = timeStr2;
-        document.getElementById('s34-method').textContent = '医保结算';
-        document.getElementById('s34-status').textContent = '已支付';
-        document.getElementById('s34-status').style.color = 'var(--ok)';
-        document.getElementById('s34-detail').innerHTML =
-          s10DisDrugs.map(function(d){
-            return '<div class="rowkv rowkv-sm"><span class="k">'+d.name+'</span><span class="v">¥'+d.price.toFixed(2)+'</span></div>';
-          }).join('')
-          +'<div class="rowkv rowkv-sm"><span class="k">备注</span><span class="v" style="font-size:11px;color:var(--sub);">请到药房取药 · 精二药品需签字领取</span></div>';
-        go('s34');
-      };
-      openBill();
-    }
+    document.querySelector('#s34-notice-card .notice').innerHTML = '处方已由主治医生审核开具。药品请在<strong>门诊药房2号窗口</strong>领取。<br>精二药品需本人或监护人签字确认。';
+    go('s34');
   }
 
   renderS10();
@@ -2651,7 +2628,6 @@
         +'<div style="display:flex;gap:8px;margin-top:10px;">'
         +(b.paid?'':'<button class="btn-pill" style="flex:1;font-size:11px;padding:8px;background:var(--warn);color:#fff;font-weight:600;" onclick="event.stopPropagation();openBill()">支付</button>')
         +'<button class="btn-pill" style="flex:1;font-size:11px;padding:8px;" onclick="event.stopPropagation();showBillDetail('+i+')">查看详情</button>'
-        +'<button class="btn-pill primary" style="flex:1;font-size:11px;padding:8px;" onclick="event.stopPropagation();alert(\'电子发票已发送至您绑定的手机号\')">开具发票</button>'
         +'</div></div>';
     }).join('')+'<div style="height:10px;"></div>';
   }
@@ -2660,11 +2636,17 @@
     var b = s33Bills[i];
     document.getElementById('s34-title').textContent = b.type;
     document.getElementById('s34-type').textContent = b.type;
+    document.getElementById('s34-amount').parentElement.style.display = '';
     document.getElementById('s34-amount').textContent = '¥'+b.amount.toFixed(2);
     document.getElementById('s34-time').textContent = b.time;
-    document.getElementById('s34-method').textContent = b.method;
-    document.getElementById('s34-status').textContent = b.paid?'已支付':'待支付';
-    document.getElementById('s34-status').style.color = b.paid?'var(--ok)':'var(--warn)';
+    // 移除动态添加的医生/就诊人行
+    var docRow = document.getElementById('s34-doc-row');
+    var patRow = document.getElementById('s34-pat-row');
+    if(docRow) docRow.style.display = 'none';
+    if(patRow) patRow.style.display = 'none';
+    // 隐藏处方相关卡片
+    document.getElementById('s34-drugs-card').style.display = 'none';
+    document.getElementById('s34-detail-card').style.display = '';
     var detailHtml = '';
     if(b.doctor) detailHtml += '<div class="rowkv rowkv-sm"><span class="k">医生</span><span class="v">'+b.doctor+'</span></div>';
     if(b.dept) detailHtml += '<div class="rowkv rowkv-sm"><span class="k">科室</span><span class="v">'+b.dept+'</span></div>';
@@ -2676,6 +2658,7 @@
     if(b.doc) detailHtml += '<div class="rowkv rowkv-sm"><span class="k">开方医生</span><span class="v">'+b.doc+'</span></div>';
     if(b.note) detailHtml += '<div class="rowkv rowkv-sm"><span class="k">备注</span><span class="v" style="font-size:11px;color:var(--sub);">'+b.note+'</span></div>';
     document.getElementById('s34-detail').innerHTML = detailHtml;
+    document.querySelector('#s34-notice-card .notice').innerHTML = '如需开具发票，请于就诊后30日内凭缴费凭证到收费窗口或线上自助办理。电子发票与纸质发票具有同等法律效力。';
     go('s34');
   }
 
